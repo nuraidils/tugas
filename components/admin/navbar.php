@@ -18,9 +18,9 @@
                         <li class="nav-item">
                             <button class="nav-link  <?= $activePage === "dataGuru" || $activePage === "dataKelas" || $activePage === "dataSiswa" ? 'active' : '' ?>" type="button" data-bs-toggle="menu" aria-expanded="false">Manajemen Data</button>
                             <div class="menu menu-translucent">
-                                <a class="menu-item <?= $activePage === "dataGuru" || $activePage === "tambahDataGuru" ? 'active' : '' ?>" href="<?= $activePage === "dataGuru" ? '#' : '/dashboard-project-2/public/admin/pages/data-guru.php' ?>">Data Guru</a>
-                                <a class="menu-item <?= $activePage === "dataKelas" || $activePage === "tambahDataKelas" ? 'active' : '' ?>" href="<?= $activePage === "dataKelas" ? '#' : '/dashboard-project-2/public/admin/pages/data-kelas.php' ?>">Data Kelas</a>
-                                <a class="menu-item <?= $activePage === "dataSiswa" || $activePage === "tambahDataSiswa" ? 'active' : '' ?>" href="<?= $activePage === "dataSiswa" ? '#' : '/dashboard-project-2/public/admin/pages/data-siswa.php' ?>">Data Siswa</a>
+                                <a class="menu-item <?= $activePage === "dataGuru" || $activePage === "tambahDataGuru" ? 'active' : '' ?>" href="<?= $activePage === "dataGuru" ? '#' : '/dashboard-project-2/public/admin/data-guru/' ?>">Data Guru</a>
+                                <a class="menu-item <?= $activePage === "dataKelas" || $activePage === "tambahDataKelas" ? 'active' : '' ?>" href="<?= $activePage === "dataKelas" ? '#' : '/dashboard-project-2/public/admin/data-kelas/' ?>">Data Kelas</a>
+                                <a class="menu-item <?= $activePage === "dataSiswa" || $activePage === "tambahDataSiswa" ? 'active' : '' ?>" href="<?= $activePage === "dataSiswa" ? '#' : '/dashboard-project-2/public/admin/data-siswa/' ?>">Data Siswa</a>
                             </div>
                         </li>
                     </ul>
@@ -33,10 +33,10 @@
                         </span>
                     </button>
                     <div class="menu menu-translucent">
-                        <a class="menu-item" href="#">Profile</a>
-                        <a class="menu-item" href="#">Settings</a>
-                        <hr class="menu-divider" />
-                        <a class="menu-item theme-danger" href="/dashboard-project-2/index.php">Logout</a>
+                        <!-- <a class="menu-item" href="#">Profile</a>
+                        <a class="menu-item" href="#">Settings</a> -->
+                        <!-- <hr class="menu-divider" /> -->
+                        <a class="menu-item theme-danger" href="/dashboard-project-2/public/index.php">Logout</a>
                     </div>
                 </div>
             </div>
