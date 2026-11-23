@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4>Formulir Tambah Data Guru</h4>
+                        <h4 class="mb-0">Formulir Tambah Data Guru</h4>
                         <a href="index.php" class="btn btn-primary">Kembali</a>
                     </div>
 
@@ -88,7 +88,7 @@
                             <div class="d-flex justify-content-end gap-3 py-3">
                                 <a href="index.php" type="button" class="btn-solid theme-secondary">Batal</a>
                                 <button type="reset" class="btn-outline theme-danger">Reset</button>
-                                <button type="submit" class="btn-solid theme-primary">Kirim</button>
+                                <button type="submit" name="tambah_guru" class="btn-solid theme-primary">Kirim</button>
                             </div>
                         </form>
                     </div>

@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4>Formulir Tambah Data Siswa</h4>
+                        <h4 class="mb-0">Formulir Tambah Data Siswa</h4>
                         <a href="index.php" class="btn btn-primary">Kembali</a>
                     </div>
 
@@ -77,13 +77,21 @@
                                         <label for="kelas" class="form-label">Pilih Kelas</label>
                                         <select class="form-control" id="kelas" name="kelas" aria-label="Pilih Kelas" required>
                                             <option value="" selected disabled>--Pilih Kelas--</option>
-                                            <option value="X RPL 1">X RPL 1</option>
-                                            <option value="X RPL 2">X RPL 2</option>
-                                            <option value="X RPL 3">X RPL 3</option>
-                                            <option value="XI RPL 1">XI RPL 1</option>
-                                            <option value="XI RPL 2">XI RPL 2</option>
-                                            <option value="XII RPL 1">XII RPL 1</option>
-                                            <option value="XII RPL 2">XII RPL 2</option>
+                                            <?php
+                                                $query = "SELECT tingkat, nama_kelas FROM data_kelas ORDER BY tingkat, nama_kelas";
+                                                $statement = mysqli_query($koneksi, $query);
+
+                                                if ($statement) :
+                                                    while ($option = mysqli_fetch_assoc($statement)) :
+                                                        $nama_kelas_formatted = $option['tingkat'] . " " . $option['nama_kelas'];
+                                            ?>
+                                                <option value="<?= htmlspecialchars($nama_kelas_formatted) ?>">
+                                                    <?= htmlspecialchars($nama_kelas_formatted) ?>
+                                                </option>
+                                            <?php
+                                                    endwhile;
+                                                endif;
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="col-12 md:col-4 pb-3 md:pb-0">
@@ -121,7 +129,7 @@
                             <div class="d-flex justify-content-end gap-3 py-3">
                                 <a href="index.php" type="button" class="btn-solid theme-secondary">Batal</a>
                                 <button type="reset" class="btn-outline theme-danger">Reset</button>
-                                <button type="submit" class="btn-solid theme-primary">Kirim</button>
+                                <button type="submit" name="tambah_siswa" class="btn-solid theme-primary">Kirim</button>
                             </div>
                         </form>
                     </div>

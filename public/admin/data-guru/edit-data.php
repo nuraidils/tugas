@@ -97,7 +97,7 @@
                             <div class="d-flex justify-content-end gap-3 py-3">
                                 <a href="index.php" type="button" class="btn-solid theme-secondary">Batal</a>
                                 <button type="reset" class="btn-outline theme-danger">Reset</button>
-                                <button type="submit" class="btn-solid theme-primary">Kirim</button>
+                                <button type="submit" name="edit_guru" class="btn-solid theme-primary">Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>

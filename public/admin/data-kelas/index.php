@@ -36,7 +36,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
                                 </div>
                                 <div class="dialog-body">
-                                    <form id="tambahDataKelas" action="" method="post" enctype="multipart/form-data">
+                                    <form id="tambahDataKelas" action="../../../actions/admin/create/proses-tambah-kelas.php" method="post" enctype="multipart/form-data">
                                         <div class="form-field">
                                             <div class="row py-3 px-3">
                                                 <div class="col-12 md:col-3 pb-3 md:pb-0">
@@ -73,7 +73,7 @@
                                 <div class="dialog-footer">
                                     <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Batal</button>
                                     <button type="reset" form="tambahDataKelas" class="btn-outline theme-danger">Reset</button>
-                                    <button type="submit" form="tambahDataKelas" class="btn-solid theme-primary">Simpan Data</button>
+                                    <button type="submit" name="tambah_kelas" form="tambahDataKelas" class="btn-solid theme-primary">Simpan Data</button>
                                 </div>
                             </dialog>
 

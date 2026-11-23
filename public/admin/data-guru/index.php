@@ -36,7 +36,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
                                 </div>
                                 <div class="dialog-body">
-                                    <form id="tambahDataGuru" action="" method="post" enctype="multipart/form-data">
+                                    <form id="tambahDataGuru" action="../../../actions/admin/create/proses-tambah-guru.php" method="post" enctype="multipart/form-data">
                                         <div class="form-field">
                                             <div class="row py-3 px-3">
                                                 <div class="col-12 md:col-6 pb-3 md:pb-0">
@@ -85,7 +85,7 @@
                                             </div>
                                             <div class="pb-3 px-3">
                                                 <label for="foto_guru" class="form-label">Foto Guru</label>
-                                                <input class="form-control" type="file" id="foto_guru" name="foto_guru" accept="image/png, image/jpeg, image/jpg" aria-label="Pilih Foto Guru" required />
+                                                <input class="form-control" type="file" id="foto_guru" name="foto_guru" accept="image/png, image/jpeg, image/jpg" aria-label="Pilih Foto Guru" />
                                             </div>
                                             <div class="pb-3 px-3">
                                                 <label for="alamat" class="form-label">Alamat Guru</label>
@@ -97,7 +97,7 @@
                                 <div class="dialog-footer">
                                     <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Batal</button>
                                     <button type="reset" form="tambahDataGuru" class="btn-outline theme-danger">Reset</button>
-                                    <button type="submit" form="tambahDataGuru" class="btn-solid theme-primary">Simpan Data</button>
+                                    <button type="submit" name="tambah_guru" form="tambahDataGuru" class="btn-solid theme-primary">Simpan Data</button>
                                 </div>
                             </dialog>
 
@@ -195,7 +195,7 @@
                                                 <i class="bi bi-pencil-square"></i>
                                                 Edit
                                             </a>
-
+                                            
                                             <a href="../../../actions/admin/delete/proses-hapus-guru.php?id=<?= $row['id'] ?>" class="theme-danger btn-outline btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">
                                                 <i class="bi bi-trash3"></i>
                                                 Delete

@@ -81,13 +81,21 @@
                                         <label for="kelas" class="form-label">Pilih Kelas</label>
                                         <select class="form-control" id="kelas" name="kelas" aria-label="Pilih Kelas" required>
                                             <option value="" disabled>Pilih Kelas...</option>
-                                            <option value="X RPL 1" <?= ($data['kelas'] == 'X RPL 1') ? 'selected' : ''; ?>>X RPL 1</option>
-                                            <option value="X RPL 2" <?= ($data['kelas'] == 'X RPL 2') ? 'selected' : ''; ?>>X RPL 2</option>
-                                            <option value="X RPL 3" <?= ($data['kelas'] == 'X RPL 3') ? 'selected' : ''; ?>>X RPL 3</option>
-                                            <option value="XI RPL 1" <?= ($data['kelas'] == 'XI RPL 1') ? 'selected' : ''; ?>>XI RPL 1</option>
-                                            <option value="XI RPL 2" <?= ($data['kelas'] == 'XI RPL 2') ? 'selected' : ''; ?>>XI RPL 2</option>
-                                            <option value="XII RPL 1" <?= ($data['kelas'] == 'XII RPL 1') ? 'selected' : ''; ?>>XII RPL 1</option>
-                                            <option value="XII RPL 2" <?= ($data['kelas'] == 'XII RPL 2') ? 'selected' : ''; ?>>XII RPL 2</option>
+                                            <?php
+                                                $query = "SELECT tingkat, nama_kelas FROM data_kelas ORDER BY tingkat, nama_kelas";
+                                                $statement = mysqli_query($koneksi, $query);
+
+                                                if ($statement) :
+                                                    while ($option = mysqli_fetch_assoc($statement)) :
+                                                        $nama_kelas_formatted = $option['tingkat'] . " " . $option['nama_kelas'];
+                                            ?>
+                                                <option value="<?= htmlspecialchars($nama_kelas_formatted) ?>" <?= ($data['kelas'] == $nama_kelas_formatted) ? 'selected' : ''; ?>>
+                                                    <?= htmlspecialchars($nama_kelas_formatted) ?>
+                                                </option>
+                                            <?php
+                                                    endwhile;
+                                                endif;
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="col-12 md:col-7 pb-3 md:pb-0">
@@ -133,7 +141,7 @@
                             <div class="d-flex justify-content-end gap-3 py-3">
                                 <a href="index.php" type="button" class="btn-solid theme-secondary">Batal</a>
                                 <button type="reset" class="btn-outline theme-danger">Reset</button>
-                                <button type="submit" class="btn-solid theme-primary">Kirim</button>
+                                <button type="submit" name="edit_siswa" class="btn-solid theme-primary">Simpan Perubahan</button>
                             </div>
                         </form>
                     </div>

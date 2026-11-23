@@ -36,7 +36,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
                                 </div>
                                 <div class="dialog-body">
-                                    <form id="tambahDataSiswa" action="" method="post" enctype="multipart/form-data">
+                                    <form id="tambahDataSiswa" action="../../../actions/admin/create/proses-tambah-siswa.php" method="post" enctype="multipart/form-data">
                                         <div class="form-field">
                                             <div class="row p-3">
                                                 <div class="col-12 md:col-6 pb-3 md:pb-0">
@@ -122,7 +122,7 @@
                                 <div class="dialog-footer">
                                     <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Batal</button>
                                     <button type="reset" form="tambahDataSiswa" class="btn-outline theme-danger">Reset</button>
-                                    <button type="submit" form="tambahDataSiswa" class="btn-solid theme-primary">Simpan Data</button>
+                                    <button type="submit" name="tambah_siswa" form="tambahDataSiswa" class="btn-solid theme-primary">Simpan Data</button>
                                 </div>
                             </dialog>
 
@@ -136,10 +136,11 @@
                     <hr />
 
                     <div class="table-responsive">
-                        <table class="table table-bordered text-center align-middle">
+                        <table class="table table-bordered text-center align-middle w-100">
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <!-- <th>Foto</th> -->
                                     <th>NISN</th>
                                     <th class="text-start">Nama Lengkap</th>
                                     <th>Kelas</th>
@@ -157,6 +158,7 @@
                                 ?>
                                     <tr>
                                         <th scope="row"><?= $no++ ?></th>
+                                        <!-- <td class="w-25"><img class="img-fluid" src="<?= !$row['foto_siswa'] ? '<p>foto tidak ada</p>' : '/dashboard-project-1-v6/assets/upload' . $row['foto_siswa']; ?>" alt=""></td> -->
                                         <td><?= $row['nisn'] ?></td>
                                         <td class="text-start"><?= $row['nama_siswa'] ?></td>
                                         <td><?= $row['kelas'] ?></td>
@@ -207,18 +209,14 @@
                                                                     <p class="bg-secondary p-4 rounded-2"><?= $row['agama']; ?></p>
                                                                 </div>
                                                                 <div class="sm:col-6 col-12">
-                                                                    <h4>Tempat Lahir</h4>
-                                                                    <p class="bg-secondary p-4 rounded-2"><?= $row['tempat_lahir']; ?></p>
-                                                                </div>
-                                                                <div class="sm:col-6 col-12">
-                                                                    <h4>Tanggal Lahir</h4>
-                                                                    <p class="bg-secondary p-4 rounded-2"><?= $tanggal_lahir_formatted = date('d/m/Y', strtotime($row['tanggal_lahir'])); ?></p>
+                                                                    <h4>Tempat dan Tanggal Lahir</h4>
+                                                                    <p class="bg-secondary p-4 rounded-2"><?= $row['tempat_lahir'] . ', ' . ($tanggal_lahir_formatted = date('d/m/Y', strtotime($row['tanggal_lahir']))) ?></p>
                                                                 </div>
                                                                 <div class="sm:col-6 col-12">
                                                                     <h4>Nomor Telepon</h4>
                                                                     <p class="bg-secondary p-4 rounded-2"><?= $row['no_telepon']; ?></p>
                                                                 </div>
-                                                                <div class="sm:col-6 col-12">
+                                                                <div class="col-12">
                                                                     <h4>Alamat</h4>
                                                                     <p class="bg-secondary p-4 rounded-2"><?= $row['alamat']; ?></p>
                                                                 </div>

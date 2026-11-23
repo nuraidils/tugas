@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4>Formulir Tambah Data Kelas</h4>
+                        <h4 class="mb-0">Formulir Tambah Data Kelas</h4>
                         <a href="index.php" class="btn btn-primary">Kembali</a>
                     </div>
 
@@ -37,8 +37,24 @@
                                         <input class="form-control" type="text" id="kode_kelas" name="kode_kelas" maxlength="4" placeholder="Contoh: K001" aria-label="Masukkan Kode Kelas" required />
                                     </div>
                                     <div class="col-12 md:col-9">
-                                        <label class="form-label" for="wali_kelas">Wali Kelas</label>
-                                        <input class="form-control" type="text" id="wali_kelas" name="wali_kelas" maxlength="150" placeholder="Masukkan Wali Kelas" aria-label="Masukkan Wali Kelas" required />
+                                        <label for="wali_kelas" class="form-label">Wali Kelas</label>
+                                        <select class="form-control" id="wali_kelas" name="wali_kelas" aria-label="Pilih Wali Kelas" required>
+                                            <option value="" selected disabled>--Pilih Wali Kelas--</option>
+                                            <?php
+                                                $query = "SELECT nama_guru FROM data_guru ORDER BY nama_guru ASC";
+                                                $statement = mysqli_query($koneksi, $query);
+
+                                                if ($statement) :
+                                                    while ($option = mysqli_fetch_assoc($statement)) :
+                                            ?>
+                                                <option value="<?= htmlspecialchars($option['nama_guru']) ?>">
+                                                    <?= htmlspecialchars($option['nama_guru']) ?>
+                                                </option>
+                                            <?php
+                                                    endwhile;
+                                                endif;
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row pb-3 px-3 align-items-center">
@@ -64,7 +80,7 @@
                             <div class="d-flex justify-content-end gap-3 py-3">
                                 <a href="index.php" type="button" class="btn-solid theme-secondary">Batal</a>
                                 <button type="reset" class="btn-outline theme-danger">Reset</button>
-                                <button type="submit" class="btn-solid theme-primary">Kirim</button>
+                                <button type="submit" name="tambah_kelas" class="btn-solid theme-primary">Kirim</button>
                             </div>
                         </form>
                     </div>

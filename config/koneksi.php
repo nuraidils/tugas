@@ -1,4 +1,3 @@
-
 <?php 
     $base_url = '/dashboard-project-2/public';
     $host = "localhost";
