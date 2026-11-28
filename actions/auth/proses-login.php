@@ -3,27 +3,61 @@
     session_start();
 
     if(isset($_POST['login'])) {
-        $username = $_POST['username'];
+        // melakukan trim untuk menghilangkan spasi di awal dan akhir
+        $username = trim($_POST['username']);
         $password = $_POST['password'];
-        $role = $_POST['role'];
 
-        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-        $result = mysqli_query($koneksi, $query);
+        // // melakukan hash password (bawaan algoritmanya adalah bcrypt)
+        // $pw_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        if (mysqli_num_rows($result) > 0) {
-            $data = mysqli_fetch_assoc($result);
+        // mempersiapkan query yang mencari berdasarkan username
+        $query = "SELECT id, username, password, role FROM users WHERE username = ?";
+        $stmt = mysqli_prepare($koneksi, $query); 
+        mysqli_stmt_bind_param($stmt, "s", $username); // untuk mengikat nilai php ke placeholder '?'
+        mysqli_stmt_execute($stmt); // menjalankan query yang telah dipersiapkan
+
+        $result = mysqli_stmt_get_result($stmt);
+        $data = mysqli_fetch_assoc($result);
+
+        // memeriksa data ditemukan apa tidak dan ngecek pw
+        if ($data && password_verify($password, $data['password'])) {
+            // mengganti id session dan menghapus yang lama
+            session_regenerate_id(true);
+
+            // menyimpan identitas pengguna
+            $_SESSION['user_id'] = $data['id'];
+            $_SESSION['username'] = $data['username'];
             $_SESSION['role'] = $data['role'];
             $_SESSION['is_login'] = true;
-            if($_SESSION['role'] == 'admin') {
-                header('location: ../../public/admin/index.php');
-                echo "<script>alert('Berhasil Login Sebagai Admin!')</script>";
-            } else {
-                echo "<script>alert('Berhasil Login Sebagai Guest!')</script>";
-                header('location: ../../public/index.php');
+
+            // pengecekan role dan mengarahkan ke halaman yang sesuai
+            switch ($data['role']) {
+                case 'admin':
+                    header('Location: ../../public/admin/index.php');
+                    exit;
+
+                case 'guru':
+                    header('Location: ../../public/guru/index.php');
+                    exit;
+
+                case 'guest':
+                    header('Location: ../../public/index.php');
+                    exit;
+
+                default:
+                    // jika role tidak diketahui 
+                    $_SESSION = [];
+                    session_destroy();
+
+                    header('Location: ../../public/index.php');
+                    exit;
             }
         } else {
-            echo "<script>alert('Tidak Bisa Menemukan Akun!');
-            window.location='../../public/login.php';</script>";
+            // jika username atau pw salah
+            header('Location: ../../public/login.php?error=invalid_credentials');
+            exit;
         }
+
+        mysqli_stmt_close($stmt);
     }
 ?>

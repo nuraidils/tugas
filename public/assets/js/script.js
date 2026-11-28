@@ -4,31 +4,6 @@ function formatBiasa(input) {
 
     input.value = formatted
 }
-// ai generated
-// function validasiPanjangTelepon(input) {
-//     const feedback = document.getElementById("no_telepon_feedback");
-//     const jumlahDigit = input.value.length;
-
-//     if (jumlahDigit === 0) {
-//         input.setCustomValidity("");
-//         feedback.textContent = "";
-//     } else if (jumlahDigit < 12) {
-//         const kurang = 12 - jumlahDigit;
-//         input.setCustomValidity("Nomor telepon harus terdiri dari minimal 12 digit.");
-//         feedback.textContent = `Masukkan minimal 12 digit angka (kurang ${kurang} digit).`;
-//     } else {
-//         input.setCustomValidity("");
-//         feedback.textContent = "Jumlah digit valid.";
-//     }
-// }
-
-// const inputNoTelepon = document.getElementById("no_telepon");
-// if (inputNoTelepon) {
-//     inputNoTelepon.form.addEventListener("reset", () => {
-//         inputNoTelepon.setCustomValidity("");
-//         document.getElementById("no_telepon_feedback").textContent = "";
-//     });
-// }
 
 function formatNIS(input) {
     // 1. Hapus semua karakter selain angka yang diketik pengguna

@@ -6,6 +6,14 @@
         <title>Register - Landing Page</title>
 
         <?php 
+            // melakukan pengecekan url parameter
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] === "regist_failed") {
+                    echo '<script>alert("Gagal mendaftarkan akun! Silahkan coba lagi")</script>';
+                } else if ($_GET['error'] === "username_taken") {
+                    echo '<script>alert("Username sudah digunakan! Silahkan gunakan username lain")</script>';
+                }
+            }
             include __DIR__ . '/../components/link.html'
         ?>
     </head>
@@ -45,11 +53,11 @@
                                 </div>
                                 <div class="p-3 text-center">
                                     <button type="submit" name="register" class="btn-solid theme-primary w-100">Register</button>
-                                    <p class="mb-0 pt-1"><small>Sudah punya akun? <span><a href="login.php" class="text-decoration-none">Login</a></span></small></p>
+                                    <p class="mb-0 pt-3"><small>Sudah punya akun? <span><a href="login.php" class="text-decoration-none">Login</a></span></small></p>
                                 </div>
                             </form>
                         </div>
-                    <a href="login.php" class="btn btn-primary">Login</a>
+                    <!-- <a href="login.php" class="btn btn-primary">Login</a> -->
                 </div>
             </div>
         </div>

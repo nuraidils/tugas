@@ -36,7 +36,9 @@
                         <!-- <a class="menu-item" href="#">Profile</a>
                         <a class="menu-item" href="#">Settings</a> -->
                         <!-- <hr class="menu-divider" /> -->
-                        <a class="menu-item theme-danger" href="/dashboard-project-2/public/index.php">Logout</a>
+                        <form action="/dashboard-project-2/actions/auth/proses-logout.php" method="POST">
+                            <button type="submit" name="logout" class="menu-item theme-danger">Logout</button>
+                        </form>
                     </div>
                 </div>
             </div>

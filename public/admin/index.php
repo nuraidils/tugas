@@ -6,6 +6,18 @@
         <title>Dashboard Admin</title>
 
         <?php 
+            session_start();
+
+            if (!isset($_SESSION['is_login']) || $_SESSION['is_login'] !== true) {
+                header('Location: ../login.php');
+                exit;
+            }
+
+            if ($_SESSION['role'] !== 'admin') {
+                header('Location: ../index.php');
+                exit;
+            }
+
             $activePage = 'dashboard';
 
             include_once __DIR__ . '/../../config/koneksi.php'; 
